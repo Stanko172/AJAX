@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 4 - PHP Form</title>
+</head>
+<body>
+    <h1>Form 1</h1>    
+    <form id="form">
+        <input type="text" name="username" id="username">
+        <button id="submit">Submit</button>
+    </form>
+
+    <br /><br />
+    <h1>Form 2</h1>
+    <form id="form2">
+        <input type="text" name="username2" id="username2">
+        <button id="submit2">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', proccess);
+        document.getElementById('submit2').addEventListener('click', proccess2);
+        
+        function proccess(e){
+            e.preventDefault();
+
+            var username = document.getElementById('username').value;
+
+            var xhr =new XMLHttpRequest();
+
+            xhr.open('GET', 'proccess.php?name='+ username, true);
+
+            xhr.onload = function(){
+                console.log(this.responseText);
+            }
+
+            xhr.send();
+        }
+
+        function proccess2(e){
+            e.preventDefault();
+
+            var username = document.getElementById('username2').value;
+            var param = "name=" + username
+
+            var xhr =new XMLHttpRequest();
+
+            xhr.open('POST', 'proccess.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function(){
+                console.log(this.responseText);
+            }
+
+            xhr.send(param);
+        }
+
+    </script>
+</body>
+</html>
