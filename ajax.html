@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 1 - Text file</title>
+</head>
+<body>
+
+    <button id="button">Get Text File</button>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('button').addEventListener('click', loadText);
+
+        function loadText(){
+            //Kreiranje XHR objekta
+            var xhr = new XMLHttpRequest();
+
+            //Definiranje zahtjeva
+            xhr.open('GET', 'sample.txt', true);
+
+            //Stanje zahtjeva 3 - obrada zahtjeva
+            xhr.onprogress = function(){
+                console.log("Readystate", xhr.readyState);
+            }
+
+            //Definiranje funkcije na onload -> zahtjev obrađen
+            xhr.onload = function(){
+                if(this.status = 200){
+                    console.log(this.responseText);
+
+                    document.getElementById('response').innerHTML = this.responseText;
+                }else if(this.status == 404){
+                    document.getElementById('response').innerHTML = "Not Found";
+                }
+            }
+
+            /*
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+
+                }
+            }
+            */
+
+            xhr.onerror = function(){
+                console.log("Dogodila se greška!");
+            }
+
+            //Slanje zahtjeva
+            xhr.send();
+
+        }
+    </script>
+    
+</body>
+</html>
