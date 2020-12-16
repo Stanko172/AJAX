@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Stanko Bebek",
+        "email": "stanko.bebek@fpmoz.sum.ba"
+    },
+    {
+        "id": 2,
+        "name": "Ana Anić",
+        "email": "ana.anic@fpmoz.sum.ba"
+    },
+    {
+        "id": 3,
+        "name": "Marko Marković",
+        "email": "marko.markovic@fpmoz.sum.ba"
+    }
+]
